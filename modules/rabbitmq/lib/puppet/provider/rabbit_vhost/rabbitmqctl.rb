@@ -21,7 +21,7 @@ Puppet::Type.type(:rabbit_vhost).provide(:rabbitmqctl) do
       return true
     else
       self.class.send_log(:debug, "#{@resource[:name]} does not exist output: #{output}")
-      :absent
+      return false
     end
 
   end
