@@ -54,6 +54,17 @@ class puppet ($facter_versio=latest, $puppet_version=latest, $use_mcollective=fa
         require => [File["/etc/apt/sources.list.d/puppetlabs.list"],Exec["puppet-apt-update"]], 
       }
 
+      $min1 = fqdn_rand( 30 )
+      $min2 = $min1 + 30
+
+      # Cron
+      cron { "puppet-agent":
+        command => "/usr/bin/puppet agent --no-daemonize -o >/dev/null 2>&1",
+        user  => root,
+        minute  => [ $min1, $min2 ],
+        require => Package["puppet"]
+      }
+
       if ($use_mcollective) { 
         package { ["mcollective", "mcollective-common"]:
           ensure => $mcollective_version, 
