@@ -6,12 +6,12 @@ Puppet::Type.type(:rabbit_vhost).provide(:rabbitmqctl) do
   def create
     self.class.send_log(:debug, "call create #{@resource[:name]}")
     %x[ rabbitmqctl add_vhost #{@resource[:name]} ]
-  end 
+  end
 
   def destroy
     self.class.send_log(:debug, "call destroy #{@resource[:name]}")
     %x[ rabbitmqctl delete_vhost #{@resource[:name]} ]
-  end 
+  end
 
   def exists?
     self.class.send_log(:debug, "call exists? #{@resource[:name]}")
@@ -19,11 +19,11 @@ Puppet::Type.type(:rabbit_vhost).provide(:rabbitmqctl) do
     if output =~ /@resource[:name]/ then
       self.class.send_log(:debug, "#{@resource[:name]} exists")
       return true
-    else 
+    else
       self.class.send_log(:debug, "#{@resource[:name]} does not exist output: #{output}")
-      return false
+      :absent
     end
 
-  end 
-end 
+  end
+end
 
