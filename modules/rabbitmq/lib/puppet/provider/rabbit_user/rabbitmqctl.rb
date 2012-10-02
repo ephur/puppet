@@ -16,7 +16,7 @@ Puppet::Type.type(:rabbit_user).provide(:rabbitmqctl) do
   def exists?
     self.class.send_log(:debug, "call exists? #{@resource[:name]}")
     output = %x[ rabbitmqctl list_users | grep #{resource[:name]} ]
-    if output =~ /@resource[:name]/ then
+    if output =~ /#{Regexp.escape(@resource[:name])}/ then
       self.class.send_log(:debug, "#{@resource[:name]} exists")
       return true
     else
