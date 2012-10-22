@@ -1,5 +1,7 @@
 class common(){ 
 
+  $lc_operatingsystem = downcase($operatingsystem)
+
   # Ensure packages 
   case $operatingsystem {
     "Debian": {
@@ -19,7 +21,7 @@ class common(){
     owner => root,
     group => root, 
     mode => 0440,
-    content => template("base/${downcase($operatingsystem)}/sudoers")
+    content => template("base/$lc_operatingsystem}/sudoers")
   } 
   
   # Setup users 
