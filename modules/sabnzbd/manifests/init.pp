@@ -46,7 +46,7 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
   }
 
   file {
-    "sabnzbd-sabnzbd.ini"
+    "sabnzbd-sabnzbd.ini":
       path => "${base_dir}/sabnzbd.ini",
       ensure => present,
       owner => $user,
