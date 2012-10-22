@@ -16,7 +16,8 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
   }
 
   if $base_dir == '/etc/sabnzbd'{
-    file { $base_dir:
+    file { '/etc/sabnzbd':
+      path => $base_dir,
       ensure => directory,
       owner => $user,
       group => $use_group,
@@ -44,14 +45,17 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
     require => [User[$user]];
   }
 
-  file { "${base_dir}/sabnzbd.ini":
-    ensure => present,
-    owner => $user,
-    group => $use_group,
-    mode => 0640,
-    content => template("sabnzbd/sabnzbd.ini.erb");
+  file {
+    "sabnzbd-sabnzbd.ini"
+      path => "${base_dir}/sabnzbd.ini",
+      ensure => present,
+      owner => $user,
+      group => $use_group,
+      mode => 0640,
+      content => template("sabnzbd/sabnzbd.ini.erb");
 
-    '${base_dir}/post-process-scripts':
+    "sabnzbd-post-process-scripts":
+      path => '${base_dir}/post-process-scripts':
       ensure => directory,
       recurse => true,
       owner => $user,
