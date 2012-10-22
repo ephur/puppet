@@ -18,7 +18,7 @@ class common(){
     ensure => present,
     owner => root,
     group => root, 
-    mode => 440,
+    mode => 0440,
     content => template("base/${downcase($operatingsystem)}/sudoers")
   } 
   
