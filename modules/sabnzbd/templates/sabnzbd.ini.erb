@@ -24,7 +24,7 @@ create_group_folders = 0
 date_categories = tv,
 <% else %>
 date_categories = ,
-<% endif %>
+<% end %>
 date_sort_string = ""
 dirscan_dir = "<%= $nzb_upload_dir %>"
 dirscan_speed = 5
@@ -142,7 +142,7 @@ enable_cherrypy_logging = 0
 username = "<%= $nzbmatrix_username %>"
 apikey = "<%= $nzbmatrix_password %>"
 del_bookmark = 1
-<% endif %>
+<% end %>
 
 [growl]
 growl_enable = 0
@@ -186,7 +186,7 @@ newzbin = ""
 pp = ""
 priority = -100
 script = sabToSickBeard.py
-<% endif %>
+<% end %>
 
 <% if $headphones_host != nil %>
 [[music]]
@@ -196,7 +196,7 @@ newzbin = ""
 pp = ""
 priority = -1
 script = Default
-<% endif %>
+<% end %>
 
 <% if $couchpotato_host != nil %>
 [[movies]]
@@ -206,7 +206,7 @@ newzbin = ""
 pp = ""
 priority = -1
 script = Default
-<% endif %>
+<% end %>
 
 [nzbxxx]
 username = ""
