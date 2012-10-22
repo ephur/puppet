@@ -1,0 +1,213 @@
+__version__ = 19
+
+[misc]
+admin_dir = admin
+allow_64bit_tools = 1
+allow_incomplete_nzb = 0
+allow_streaming = 0
+ampm = 0
+api_key = <%= $apikey %>
+api_warnings = 1
+auto_browser = 0
+auto_disconnect = 1
+auto_sort = 0
+bandwidth_limit = 0
+cache_dir = cache
+cache_limit = 200M
+check_new_rel = 0
+cleanup_list = ,
+complete_dir = Downloads/complete
+config_lock = 0
+create_group_folders = 0
+
+<% if $sickbeard_host != nil %>
+date_categories = tv,
+<% else %>
+date_categories = ,
+<% endif %>
+date_sort_string = ""
+dirscan_dir = "<%= $nzb_upload_dir %>"
+dirscan_speed = 5
+disable_api_key = 0
+download_dir = Downloads/incomplete
+download_free = 1G
+email_account = ""
+email_dir = ""
+email_endjob = 0
+email_from = ""
+email_full = 0
+email_pwd = ""
+email_rss = 0
+email_server = ""
+email_to = ,
+enable_date_sorting = 0
+enable_filejoin = 1
+enable_https = 1
+enable_movie_sorting = 0
+enable_par_cleanup = 1
+enable_tsjoin = 1
+enable_tv_sorting = 0
+enable_unrar = 1
+enable_unzip = 1
+fail_on_crc = 0
+folder_max_length = 256
+folder_rename = 1
+fsys_type = 0
+host = 0.0.0.0
+https_cert = server.cert
+https_key = server.key
+https_port = ""
+ignore_samples = 0
+ignore_unrar_dates = 0
+ignore_wrong_unrar = 0
+ionice = ""
+language = en
+log_dir = logs
+login_realm = SABnzbd
+max_art_opt = 0
+max_art_tries = 3
+movie_categories = movies,
+movie_extra_folder = 0
+movie_rename_limit = 100M
+movie_sort_extra = -cd%1
+movie_sort_string = ""
+never_repair = 0
+nice = ""
+no_dupes = 0
+no_ipv6 = 0
+no_penalties = 0
+nomedia_marker = ""
+nzb_backup_dir = ""
+nzb_key = e570d8baaf015d16fe7fd96695e51c77
+osx_menu = 1
+osx_speed = 1
+par2_multicore = 1
+par_option = ""
+password = <%= $webpassword %>
+password_file = ""
+pause_on_post_processing = 0
+pause_on_pwrar = 1
+permissions = ""
+port = 9000
+pre_check = 0
+pre_script = None
+queue_complete = ""
+queue_complete_pers = 0
+quick_check = 1
+quota_day = ""
+quota_period = m
+quota_resume = 0
+quota_size = ""
+randomize_server_ip = 0
+refresh_rate = 0
+replace_dots = 0
+replace_illegal = 1
+replace_spaces = 1
+req_completion_rate = 100.2
+rss_filenames = 0
+rss_rate = 60
+safe_postproc = 1
+schedlines = ,
+script_dir =
+send_group = 0
+sfv_check = 1
+size_limit = ""
+ssl_type = v23
+start_paused = 0
+top_only = 0
+tv_categories = ,
+tv_sort_countries = 1
+tv_sort_string = ""
+uniconfig = 1
+unpack_check = 1
+use_pickle = 0
+username = <%= $webuser %>
+wait_ext_drive = 5
+warned_old_queue = 0
+web_color = gold
+web_color2 = ""
+web_dir = Plush
+web_dir2 = ""
+win_menu = 1
+
+[logging]
+log_new = 0
+max_log_size = 5242880
+log_level = 1
+log_backups = 5
+enable_cherrypy_logging = 0
+
+<% if $nzbmatrix_username != nil %>
+[nzbmatrix]
+username = "<%= $nzbmatrix_username %>"
+apikey = "<%= $nzbmatrix_password %>"
+del_bookmark = 1
+<% endif %>
+
+[growl]
+growl_enable = 0
+growl_password = ""
+growl_server = ""
+ntfosd_enable = 0
+
+
+[servers]
+
+[[<%= $nntp_hostname %>]]
+name = <%= $nntp_hostname %>
+host = <%= $nntp_hostname %>
+connections = <%= $nntp_connections %>
+password = <%= $nntp_pass %>
+port = <%= $nntp_port %>
+ssl = <%= %nntp_ssl %>
+username = <%= $nntp_user %>
+retention = <%= $nntp_retention %>
+enable = 1
+fillserver = 0
+optional = 0
+timeout = 120
+
+
+[categories]
+
+[[*]]
+dir = ""
+name = *
+newzbin = ""
+pp = 3
+priority = 0
+script = None
+
+<% if $sickbeard_host != nil %>
+[[tv]]
+dir = ""
+name = tv
+newzbin = ""
+pp = ""
+priority = -100
+script = sabToSickBeard.py
+<% endif %>
+
+<% if $headphones_host != nil %>
+[[music]]
+dir = ""
+name = music
+newzbin = ""
+pp = ""
+priority = -1
+script = Default
+<% endif %>
+
+<% if $couchpotato_host != nil %>
+[[movies]]
+dir = ""
+name = movies
+newzbin = ""
+pp = ""
+priority = -1
+script = Default
+<% endif %>
+
+[nzbxxx]
+username = ""
+apikey = ""
