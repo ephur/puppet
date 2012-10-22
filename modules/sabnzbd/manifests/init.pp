@@ -55,7 +55,7 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
       content => template("sabnzbd/sabnzbd.ini.erb");
 
     "sabnzbd-post-process-scripts":
-      path => '${base_dir}/post-process-scripts':
+      path => '${base_dir}/post-process-scripts',
       ensure => directory,
       recurse => true,
       owner => $user,
