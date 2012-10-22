@@ -26,8 +26,8 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
 
   user { $user:
     ensure => present,
-    gid = $user,
-    home = "/home/$user",
+    gid => $user,
+    home => "/home/$user",
     comment => "User for SABNZBD Service",
     managehome => true,
     shell => "/bin/bash",
