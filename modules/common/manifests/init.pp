@@ -21,7 +21,7 @@ class common(){
     owner => root,
     group => root, 
     mode => 0440,
-    content => template("base/$lc_operatingsystem}/sudoers")
+    content => template("base/${lc_operatingsystem}/sudoers")
   } 
   
   # Setup users 
