@@ -41,13 +41,12 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
     require => Group[$use_group]
   }
 
-  vcsrepo { '/${path}':
+  vcsrepo { '$path':
     ensure   => latest,
     provider => git,
     source   => 'git://github.com/sabnzbd/sabnzbd.git',
     owner => $user,
     group => $use_group,
-    user => $user,
     require => [User[$user],File['sabnzbd-install-path']];
   }
 
