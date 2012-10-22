@@ -12,7 +12,7 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
   if $group == nil {
     $use_group = $user
   } else {
-    $use_group = $use_group
+    $use_group = $group
   }
 
   if $base_dir == '/etc/sabnzbd'{
