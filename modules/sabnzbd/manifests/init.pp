@@ -25,6 +25,10 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
     }
   }
 
+  group { $use_group:
+    ensure => present
+  }
+
   user { $user:
     ensure => present,
     gid => $user,
@@ -32,7 +36,8 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
     comment => "User for SABNZBD Service",
     managehome => true,
     shell => "/bin/bash",
-    system => true
+    system => true,
+    require => Group[$use_group]
   }
 
   vcsrepo { '/usr/local/apps/sabnzbd':
