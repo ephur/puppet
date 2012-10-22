@@ -47,17 +47,10 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
     source   => 'git://github.com/sabnzbd/sabnzbd.git',
     owner => $user,
     group => $use_group,
-    require => [User[$user],File['sabnzbd-install-path']];
+    require => [User[$user]];
   }
 
   file {
-    "sabnzbd-install-path":
-      ensure => directory,
-      path => "/$path",
-      owner => $user,
-      group => $use_group,
-      mode => 775;
-
     "sabnzbd-sabnzbd.ini":
       path => "/${base_dir}/sabnzbd.ini",
       ensure => present,
