@@ -6,7 +6,7 @@ allow_64bit_tools = 1
 allow_incomplete_nzb = 0
 allow_streaming = 0
 ampm = 0
-api_key = <%= $apikey >%
+api_key = <%= $apikey %>
 api_warnings = 1
 auto_browser = 0
 auto_disconnect = 1
@@ -20,13 +20,13 @@ complete_dir = Downloads/complete
 config_lock = 0
 create_group_folders = 0
 
-<% if $sickbeard_host != nil >%
+<% if $sickbeard_host != nil %>
 date_categories = tv,
-<% else >%
+<% else %>
 date_categories = ,
-<% endif >%
+<% endif %>
 date_sort_string = ""
-dirscan_dir = "<%= $nzb_upload_dir >%"
+dirscan_dir = "<%= $nzb_upload_dir %>"
 dirscan_speed = 5
 disable_api_key = 0
 download_dir = Downloads/incomplete
@@ -83,7 +83,7 @@ osx_menu = 1
 osx_speed = 1
 par2_multicore = 1
 par_option = ""
-password = <%= $webpassword >%
+password = <%= $webpassword %>
 password_file = ""
 pause_on_post_processing = 0
 pause_on_pwrar = 1
@@ -121,7 +121,7 @@ tv_sort_string = ""
 uniconfig = 1
 unpack_check = 1
 use_pickle = 0
-username = <%= $webuser >%
+username = <%= $webuser %>
 wait_ext_drive = 5
 warned_old_queue = 0
 web_color = gold
@@ -137,12 +137,12 @@ log_level = 1
 log_backups = 5
 enable_cherrypy_logging = 0
 
-<% if $nzbmatrix_username != nil >%
+<% if $nzbmatrix_username != nil %>
 [nzbmatrix]
-username = "<%= $nzbmatrix_username >%"
-apikey = "<%= $nzbmatrix_password >%"
+username = "<%= $nzbmatrix_username %>"
+apikey = "<%= $nzbmatrix_password %>"
 del_bookmark = 1
-<% endif >%
+<% endif %>
 
 [growl]
 growl_enable = 0
@@ -153,15 +153,15 @@ ntfosd_enable = 0
 
 [servers]
 
-[[<%= $nntp_hostname >%]]
-name = <%= $nntp_hostname >%
-host = <%= $nntp_hostname >%
-connections = <%= $nntp_connections >%
-password = <%= $nntp_pass >%
-port = <%= $use_nntp_port >%
-ssl = <%= %nntp_ssl >%
-username = <%= $nntp_user >%
-retention = <%= $nntp_retention >%
+[[<%= $nntp_hostname %>]]
+name = <%= $nntp_hostname %>
+host = <%= $nntp_hostname %>
+connections = <%= $nntp_connections %>
+password = <%= $nntp_pass %>
+port = <%= $use_nntp_port %>
+ssl = <%= %nntp_ssl %>
+username = <%= $nntp_user %>
+retention = <%= $nntp_retention %>
 enable = 1
 fillserver = 0
 optional = 0
@@ -178,7 +178,7 @@ pp = 3
 priority = 0
 script = None
 
-<% if $sickbeard_host != nil >%
+<% if $sickbeard_host != nil %>
 [[tv]]
 dir = ""
 name = tv
@@ -186,9 +186,9 @@ newzbin = ""
 pp = ""
 priority = -100
 script = sabToSickBeard.py
-<% endif >%
+<% endif %>
 
-<% if $headphones_host != nil >%
+<% if $headphones_host != nil %>
 [[music]]
 dir = ""
 name = music
@@ -196,9 +196,9 @@ newzbin = ""
 pp = ""
 priority = -1
 script = Default
-<% endif >%
+<% endif %>
 
-<% if $couchpotato_host != nil >%
+<% if $couchpotato_host != nil %>
 [[movies]]
 dir = ""
 name = movies
@@ -206,7 +206,7 @@ newzbin = ""
 pp = ""
 priority = -1
 script = Default
-<% endif >%
+<% endif %>
 
 [nzbxxx]
 username = ""
