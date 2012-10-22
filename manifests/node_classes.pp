@@ -1,7 +1,6 @@
 class base(){
   # Common / Shared components don't reorder these
   include stdlib
-  include puppet-inittab
 
   # Only other include that should ever be in base is common
   # if it's another module include it from common so all
