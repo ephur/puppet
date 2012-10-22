@@ -4,7 +4,9 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
               $bwlimit="none",$base_dir='/etc/sabnzbd',$user=root,$group=nil,$nzb_upload_dir=""){
 
   if $nntp_port == 119 and $nntp_ssl == 1 {
-    $nntp_port = 563
+    $use_nntp_port = 563
+  } else {
+    $use_nntp_port = $nntp_port
   }
 
   if $group == nil {
