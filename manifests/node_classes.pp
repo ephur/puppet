@@ -3,9 +3,12 @@ class base(){
   include common
 }
 
-class downloader(){ 
+class media_server(){ 
   include base
   include sabnzbd
+  include couchpotato
+  include sickbeard
+  include headphones
 }
 
 class rabbit(){
