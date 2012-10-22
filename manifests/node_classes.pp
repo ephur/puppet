@@ -42,7 +42,7 @@ class media_server(){
   include sickbeard
   include headphones
 
-  File["media_server"] -> Class["sabnzbd"]
+  File["/etc/media_server"] -> Class["sabnzbd"]
 
 }
 
