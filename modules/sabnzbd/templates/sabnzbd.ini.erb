@@ -177,7 +177,7 @@ pp = 3
 priority = 0
 script = None
 
-<% if @sickbeard_host != nil %>
+<% if @sickbeard_user != nil %>
 [[tv]]
 dir = ""
 name = tv
@@ -187,7 +187,7 @@ priority = -100
 script = sabToSickBeard.py
 <% end %>
 
-<% if @headphones_host != nil %>
+<% if @use_headphones %>
 [[music]]
 dir = ""
 name = music
@@ -197,7 +197,7 @@ priority = -1
 script = Default
 <% end %>
 
-<% if @couchpotato_host != nil %>
+<% if @use_couchpotato %>
 [[movies]]
 dir = ""
 name = movies

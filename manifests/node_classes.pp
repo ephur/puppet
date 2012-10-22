@@ -35,6 +35,8 @@ class media_server(){
     user => "sabnzbd",
     group => "sabnzbd",
     base_dir => "/etc/media_server",
+    use_couchpotato = 1,
+    use_headphones = 1,
     require => [File['/etc/media_server']]
   }
 
