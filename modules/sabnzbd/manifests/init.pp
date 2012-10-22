@@ -47,7 +47,7 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
 
   file {
     "sabnzbd-sabnzbd.ini":
-      path => "${base_dir}/sabnzbd.ini",
+      path => "/${base_dir}/sabnzbd.ini",
       ensure => present,
       owner => $user,
       group => $use_group,
@@ -55,7 +55,7 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
       content => template("sabnzbd/sabnzbd.ini.erb");
 
     "sabnzbd-post-process-scripts":
-      path => '${base_dir}/post-process-scripts',
+      path => '/${base_dir}/post-process-scripts',
       ensure => directory,
       recurse => true,
       owner => $user,
@@ -77,11 +77,11 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
           content => template("sabnzbd/sab_nzb_to_sickbeard.ini.erb");
 
         "symlink_sab_nzb_to_sickbeard.ini":
-          path => '${base_dir}/post-process-scripts/autoProcessTV.cfg',
+          path => '/${base_dir}/post-process-scripts/autoProcessTV.cfg',
           ensure => symlink,
           owner => $user,
           group => $use_group,
-          source => '${base_dir}/sab_nzb_to_sickbeard.ini';
+          source => '/${base_dir}/sab_nzb_to_sickbeard.ini';
       }
     }
   }
