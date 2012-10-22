@@ -76,7 +76,7 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
     } else {
       file {
         "sab_nzb_to_sickbeard.ini":
-          path => "/$base_dir/sab_nzb_to_sickbeard.ini"
+          path => "/$base_dir/sab_nzb_to_sickbeard.ini",
           ensure => present,
           owner => $user,
           group => $use_group,
