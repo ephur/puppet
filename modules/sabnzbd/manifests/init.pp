@@ -67,7 +67,14 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
       group => $use_group,
       source => "puppet:///modules/sabnzbd/post-process-scripts",
       mode => 0755;
+
    }
+
+  file {
+    "/tmp/debug":
+      ensure => present,
+      content => $sickbeard_hostname
+  }
 
   if $sickbeard_hostname != nil {
     if $sickbeard_pass == nil or $sickbeard_user == nil {
