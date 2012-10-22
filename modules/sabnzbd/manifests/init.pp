@@ -1,7 +1,7 @@
 class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nzbkey="",$nntp_port=119,
               $nntp_ssl=0,$nntp_connections=10,$nntp_retention=0,$sickbeard_hostname=nil,$sickbeard_ssl=1,
               $sickbeard_port=8081,$sickbeard_user=nil,$sickbeard_pass=nil,$nzbkey=nil,
-              $bwlimit="none",$base_dir='/etc/sabnzbd',$user=root,$group=nil,$nzb_upload_dir=""){
+              $bwlimit="none",$base_dir='/etc/sabnzbd',$user=root,$group=nil,$nzb_upload_dir="",$path='/usr/local/apps/sabnzbd'){
 
   if $nntp_port == 119 and $nntp_ssl == 1 {
     $use_nntp_port = 563
@@ -41,17 +41,24 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
     require => Group[$use_group]
   }
 
-  vcsrepo { '/usr/local/apps/sabnzbd':
+  vcsrepo { '/${path}':
     ensure   => latest,
     provider => git,
     source   => 'git://github.com/sabnzbd/sabnzbd.git',
     owner => $user,
     group => $use_group,
     user => $user,
-    require => [User[$user]];
+    require => [User[$user],File['sabnzbd-install-path']];
   }
 
   file {
+    "sabnzbd-install-path":
+      ensure => directory,
+      path => "/$path",
+      owner => $user,
+      group => $use_group,
+      mode => 775;
+
     "sabnzbd-sabnzbd.ini":
       path => "/${base_dir}/sabnzbd.ini",
       ensure => present,
