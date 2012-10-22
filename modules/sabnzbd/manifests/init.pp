@@ -87,7 +87,7 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
           ensure => symlink,
           owner => $user,
           group => $use_group,
-          source => '/${base_dir}/sab_nzb_to_sickbeard.ini';
+          source => "/${base_dir}/sab_nzb_to_sickbeard.ini";
           require => [File['sab_nzb_to_sickbeard.ini']]
       }
     }
