@@ -13,6 +13,7 @@ class base(){
 }
 
 class media_server(){
+  File["media_server"] -> Class["sabnzbd"]
   include base
 
   file { "/etc/media_server":
