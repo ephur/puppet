@@ -35,8 +35,10 @@ class media_server(){
     user => "sabnzbd",
     group => "sabnzbd",
     base_dir => "/etc/media_server",
-    use_couchpotato = 1,
-    use_headphones = 1,
+    use_couchpotato => 1,
+    use_headphones => 1,
+    nzbmatrix_username => $sabnzbd_nzbmatrix_username,
+    nzbmatrix_password => $sabnzbd_nzbmatrix_password,
     require => [File['/etc/media_server']]
   }
 
