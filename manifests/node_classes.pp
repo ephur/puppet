@@ -34,7 +34,8 @@ class media_server(){
     sickbeard_hostname => "localhost",
     user => "sabnzbd",
     group => "sabnzbd",
-    base_dir => "/etc/media_server"
+    base_dir => "/etc/media_server",
+    require => [File['/etc/media_server']]
   }
 
   include couchpotato
