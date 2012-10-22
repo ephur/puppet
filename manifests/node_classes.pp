@@ -13,7 +13,6 @@ class base(){
 }
 
 class media_server(){
-  File["media_server"] -> Class["sabnzbd"]
   include base
 
   file { "/etc/media_server":
@@ -40,10 +39,11 @@ class media_server(){
   }
 
   include couchpotato
-
   include sickbeard
-
   include headphones
+
+  File["media_server"] -> Class["sabnzbd"]
+
 }
 
 class rabbit(){
