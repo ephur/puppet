@@ -15,8 +15,8 @@ class base(){
 class media_server(){
   include base
 
-  file { "/etc/media_server":
-    ensure => directoy,
+  file { "/etc/media_server/":
+    ensure => directory,
     owner => root,
     group => root,
     mode => 755
@@ -42,7 +42,7 @@ class media_server(){
   include sickbeard
   include headphones
 
-  File["/etc/media_server"] -> Class["sabnzbd"]
+  # File["/etc/media_server"] -> Class["sabnzbd"]
 
 }
 
