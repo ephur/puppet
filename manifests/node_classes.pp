@@ -3,6 +3,11 @@ class base(){
   include common
 }
 
+class downloader(){ 
+  include base
+  include sabnzbd
+}
+
 class rabbit(){
   include rabbitmq
 }
