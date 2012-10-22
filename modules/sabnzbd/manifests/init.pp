@@ -70,7 +70,7 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
    }
 
   if $sickbeard_hostname != nil {
-    if $sickbeard_pass == nil or $sickbeard_user ==nil {
+    if $sickbeard_pass == nil or $sickbeard_user == nil {
       err("password or username not set, disable sickbeard integration or update pass sickbeard_pass and sickbeard_user to the module")
     } else {
       file {
