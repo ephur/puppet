@@ -26,7 +26,8 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
   }
 
   group { $use_group:
-    ensure => present
+    ensure => present,
+    system => true
   }
 
   user { $user:
