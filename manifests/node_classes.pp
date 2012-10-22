@@ -21,6 +21,8 @@ class media_server(){
     nntp_pass => $sabnzbd_nttp_pass,
     nntp_ssl => $sabnzbd_nttp_ssl,
     sickbeard_hostname => "localhost",
+    user = "sabnzbd", 
+    group = "sabnzbd"
   }
 
   include couchpotato
