@@ -2,7 +2,7 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
               $nntp_ssl=0,$nntp_connections=10,$nntp_retention=0,$sickbeard_hostname=nil,$sickbeard_ssl=1,
               $sickbeard_port=8081,$sickbeard_user=nil,$sickbeard_pass=nil,$nzbkey=nil,
               $bwlimit="none",$base_dir='/etc/sabnzbd',$user=root,$group=nil,$nzb_upload_dir="",
-              $use_couchpotato = 0, $use_headphones =0,
+              $use_couchpotato = 0, $use_headphones=0, $nzbmatrix_username=nil, $nzbmatrix_password=nil,
               $path='usr/local/apps/sabnzbd'){
 
   if $nntp_port == 119 and $nntp_ssl == 1 {
