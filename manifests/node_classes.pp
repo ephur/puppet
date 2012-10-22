@@ -15,6 +15,13 @@ class base(){
 class media_server(){
   include base
 
+  file { "/etc/media_server":
+    ensure => directoy,
+    owner => root,
+    group => root,
+    mode => 755
+  }
+
   class { "sabnzbd":
     apikey => $sabnzbd_apikey,
     nzbkey => $sabnzbd_nzbkey,
