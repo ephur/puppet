@@ -41,7 +41,7 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
     require => Group[$use_group]
   }
 
-  vcsrepo { '/${path}':
+  vcsrepo { '/usr/local/apps/sabnzbd':
     ensure   => latest,
     provider => git,
     source   => 'git://github.com/sabnzbd/sabnzbd.git',
