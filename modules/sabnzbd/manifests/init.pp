@@ -69,7 +69,6 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
       group => $use_group,
       source => "puppet:///modules/sabnzbd/post-process-scripts",
       mode => 0755;
-
    }
 
   file {

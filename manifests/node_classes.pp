@@ -32,6 +32,8 @@ class media_server(){
     nntp_pass => $sabnzbd_nttp_pass,
     nntp_ssl => $sabnzbd_nttp_ssl,
     sickbeard_hostname => "localhost",
+    sickbeard_user => $web_user,
+    sickbeard_pass => $web_pass,
     user => "sabnzbd",
     group => "sabnzbd",
     base_dir => "/etc/media_server",
