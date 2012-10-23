@@ -28,7 +28,9 @@ class headphones($user,$listen_port,$http_username,$http_password,
   vcsrepo { '/usr/local/apps/headphones':
     ensure   => present,
     provider => git,
-    source   => 'git://github.com/rembo10/headphones.git'
+    source   => 'git://github.com/rembo10/headphones.git',
+    owner    => headphones,
+    group    => headphones
   }
 
   inittab { 'mhp':
