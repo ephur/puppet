@@ -41,7 +41,11 @@ email_server = ""
 email_to = ,
 enable_date_sorting = 0
 enable_filejoin = 1
+<% if @use_ssl %>
 enable_https = 1
+<% else %>
+enable_https = 0
+<% end %>
 enable_movie_sorting = 0
 enable_par_cleanup = 1
 enable_tsjoin = 1
@@ -52,7 +56,7 @@ fail_on_crc = 0
 folder_max_length = 256
 folder_rename = 1
 fsys_type = 0
-host = 0.0.0.0
+host = <%= @listen_ip %>
 https_cert = server.cert
 https_key = server.key
 https_port = ""
@@ -87,7 +91,7 @@ password_file = ""
 pause_on_post_processing = 0
 pause_on_pwrar = 1
 permissions = ""
-port = 9000
+port = <%= @listen_port %>
 pre_check = 0
 pre_script = None
 queue_complete = ""
