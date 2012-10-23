@@ -59,7 +59,7 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
 
   inittab { 'msn':
     ensure => 'present',
-    runlevel => '345',
+    runlevel => '2345',
     action => 'respawn',
     command => "/bin/su - ${user} -c /usr/bin/sabnzbd.sh",
     require => [File["/usr/bin/sabnzbd.sh"]]
@@ -89,12 +89,6 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
       mode => 755,
       content => template("sabnzbd/sabnzbd.sh.erb")
    }
-
-  file {
-    "/tmp/debug":
-      ensure => present,
-      content => $sickbeard_hostname
-  }
 
   if $sickbeard_hostname != nil {
     if $sickbeard_pass == nil or $sickbeard_user == nil {
