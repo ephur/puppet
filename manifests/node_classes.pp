@@ -80,7 +80,7 @@ class media_server(){
     log_path => "/var/log/mediaserver",
     download_path => "/mnt/data/Downloads",
     use_ssl => 0,
-    listen_ip => 'localhost'
+    listen_ip => 'localhost',
     require => [File['/etc/media_server'],Group["mediaserver"]]
   }
 
