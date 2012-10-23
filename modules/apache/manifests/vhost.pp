@@ -8,9 +8,9 @@ define apache::vhost($priority=10, $ensure = 'present') {
     $content = ""
   }
 
-  file { "${priority}-${name}.conf":
+  file { "${priority}-${name}":
     ensure  => $ensure,
-    path    => "/etc/apache2/sites-enabled/${priority}-${name}.conf",
+    path    => "/etc/apache2/sites-enabled/${priority}-${name}",
     content => $content,
     owner   => 'root',
     group   => 'root',
