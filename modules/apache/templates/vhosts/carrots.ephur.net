@@ -10,10 +10,9 @@
   # Basic server settings
   ServerName integrity.slicehost.com
 
-  RewriteEngine On
-  RewriteCond %{REQUEST_URI} ^/downloads
-  RewriteRule ^/downloads(.*)$ http://localhost:9000/sabnzbd$1 [P]
-
+  #RewriteEngine On
+  #RewriteCond %{REQUEST_URI} ^/downloads
+  #RewriteRule ^/downloads(.*)$ http://localhost:9000/sabnzbd$1 [P]
 
   # Log settings
   CustomLog ${APACHE_LOG_DIR}/carrot.ephur.net_access.log combined
