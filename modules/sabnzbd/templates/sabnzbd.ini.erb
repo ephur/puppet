@@ -16,7 +16,7 @@ cache_dir = cache
 cache_limit = 200M
 check_new_rel = 0
 cleanup_list = ,
-complete_dir = <%= @download_dir %>/complete
+complete_dir = <%= @download_path %>/complete
 config_lock = 0
 create_group_folders = 0
 <% if @sickbeard_host != nil %>
@@ -28,7 +28,7 @@ date_sort_string = ""
 dirscan_dir = "<%= @nzb_upload_dir %>"
 dirscan_speed = 5
 disable_api_key = 0
-download_dir = <%= @download_dir %>/incomplete
+download_dir = <%= @download_path %>/incomplete
 download_free = 1G
 email_account = ""
 email_dir = ""
