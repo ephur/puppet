@@ -26,7 +26,7 @@
                 downgrade-1.0 force-response-1.0
     BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
 
-    DocumentRoot = /var/www
+    DocumentRoot /var/www
 
     <Directory /var/www/>
         Order allow,deny
