@@ -1,24 +1,25 @@
 class apache(){
-  package { ["apache2"]:
+
+  package { ['apache2']:
     ensure => latest,
   }
 
-  service { "apache2":
-    ensure => running,
-    enable => true,
+  service { 'apache2':
+    ensure    => running,
+    enable    => true,
     subscribe => Package['apache2']
   }
 
-  file { "/etc/apache2/ssl":
+  file { '/etc/apache2/ssl':
     ensure => directory,
-    owner => root,
-    group => root,
-    mode => 0640;
+    owner  => root,
+    group  => root,
+    mode   => '0640';
   }
 
-  a2mod { ["proxy","ssl"]:
+  a2mod { ['proxy','ssl']:
     ensure => present,
-    notify => Service["apache2"],
+    notify => Service['apache2'],
   }
 
 }
