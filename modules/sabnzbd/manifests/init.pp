@@ -61,7 +61,7 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
     runlevel => '345',
     action => 'respawn',
     command => "/usr/bin/su - ${user} -c /usr/bin/sabnzbd.sh",
-    require[File["/usr/bin/sabnzbd.sh"]]
+    require => [File["/usr/bin/sabnzbd.sh"]]
   }
 
   file {
