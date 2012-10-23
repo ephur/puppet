@@ -83,6 +83,7 @@ class media_server(){
     nzbmatrix_username => $nzbmatrix_username,
     hp_username => $musicbrain_vip_username,
     hp_password => $musicbrain_vip_password,
+    sabnzbd_server => "https://localhost:9000",
     require => [File['/etc/media_server'],Group["mediaserver"]]
   }
 
