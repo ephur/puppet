@@ -48,6 +48,13 @@ class media_server(){
     ensure => "present",
   }
 
+  add_user { "$unix_user":
+    ensure => present,
+    id => $unix_user_id,
+    ssh_key => $unix_ssh_pubkey,
+    groups => ['mediaserver']
+  }
+
   class { "sabnzbd":
     listen_port => 9000,
     apikey => $sabnzbd_apikey,
@@ -94,11 +101,7 @@ class media_server(){
     require => [File['/etc/media_server'],Group["mediaserver"]]
   }
 
-
-  class {'apache':  }
-
   include ajaxplorer
-
   include couchpotato
   include sickbeard
   include headphones
