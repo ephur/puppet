@@ -81,6 +81,8 @@ class media_server(){
     user_groups => ["mediaserver"],
     nzbmatrix_password => $nzbmatrix_password,
     nzbmatrix_username => $nzbmatrix_username,
+    hp_username => $musicbrain_vip_username,
+    hp_password => $musicbrain_vip_password,
     require => [File['/etc/media_server'],Group["mediaserver"]]
   }
 
