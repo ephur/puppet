@@ -1,30 +1,38 @@
-class common(){ 
+class common(){
 
   $lc_operatingsystem = downcase($operatingsystem)
 
-  # Ensure packages 
+  # Ensure packages
   case $operatingsystem {
     "Debian": {
-      package { ["curl","wget", "vim","git"]: 
+      package { ["curl","wget", "vim","git"]:
         ensure => latest
+      }
+
+      file { "/etc/apt/sources.list":
+        ensure => present,
+        owner => root,
+        group => root,
+        mode => 0644,
+        content => template("common/${lc_operatingsystem}/sources.list.erb")
       }
     }
   }
 
-  # Setup sudo 
-  package { "sudo": 
+  # Setup sudo
+  package { "sudo":
     ensure => latest
-  } 
+  }
 
   file { "/etc/sudoers":
     ensure => present,
     owner => root,
-    group => root, 
+    group => root,
     mode => 0440,
     content => template("common/${lc_operatingsystem}/sudoers.erb")
-  } 
-  
-  # Setup users 
+  }
+
+  # Setup users
   add_user { ephur:
     ensure => present,
     id => 1000,
