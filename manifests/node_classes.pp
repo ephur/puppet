@@ -33,7 +33,7 @@ class media_server(){
     "/mnt/data/Music":
       ensure => directory,
       owner => "headphones",
-      group => "headphones"
+      group => "headphones",
       mode => 0775;
   }
 
