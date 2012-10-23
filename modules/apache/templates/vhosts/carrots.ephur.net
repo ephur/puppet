@@ -43,6 +43,14 @@
       Require valid-user
   </Directory>
 
+  <Location /downloads>
+    order deny,allow
+    deny from all
+    allow from all
+    ProxyPass http://localhost:9000/sabnzbd
+    ProxyPassReverse http://localhost:9000/sabnzbd
+  </Location>
+
   <Location /music>
     order deny,allow
     deny from all
