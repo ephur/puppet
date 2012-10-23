@@ -19,7 +19,7 @@
     # SSL Settings
     SSLEngine on
     SSLCertificateKeyFile /etc/apache2/ssl/carrots.ephur.net.key
-    SSLCertificateFile    /etc/apache2/ssl/carrots.ephur.net.crt
+    SSLCertificateFile    /etc/apache2/ssl/carrots.ephur.net.cert
 
     BrowserMatch "MSIE [2-6]" \
                 nokeepalive ssl-unclean-shutdown \
