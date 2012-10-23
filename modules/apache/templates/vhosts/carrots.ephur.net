@@ -38,9 +38,7 @@
       Require valid-user
   </Directory>
 
-  <Location />
-      Order allow,deny
-      Allow from all
+  <Location ~ />
       AuthName "You know what to do"
       AuthType Basic
       AuthBasicProvider file
