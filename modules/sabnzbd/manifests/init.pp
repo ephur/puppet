@@ -27,6 +27,10 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
     }
   }
 
+  package {["python","python-cheetah","python-configobj","python-feedparser","python-dbus","python-openssl","python-support","python-yenc","par2","unzip","unrar-free"]:
+    ensure => latest
+  }
+
   group { $use_group:
     ensure => present,
     system => true
@@ -52,6 +56,14 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
     require => [User[$user]];
   }
 
+  inittab { 'msn':
+    ensure => 'present',
+    runlevel => '345',
+    action => 'respawn',
+    command => "/usr/bin/su - ${user} -c ${base_dir}/"
+    Require[File[""]]
+  }
+
   file {
     "sabnzbd-sabnzbd.ini":
       path => "/${base_dir}/sabnzbd.ini",
@@ -69,6 +81,13 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
       group => $use_group,
       source => "puppet:///modules/sabnzbd/post-process-scripts",
       mode => 0755;
+
+    "sabnzbd-inittab-script":
+      path => "/usr/bin/sabnzbd.sh",
+      owner => root,
+      group => root,
+      mode => 755,
+      content => template("sabnzbd/sabnzbd.sh")
    }
 
   file {
