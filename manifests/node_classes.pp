@@ -16,19 +16,19 @@ class media_server(){
       ensure => directory,
       owner => root,
       group => root,
-      mode => 755,
+      mode => 0755;
 
     "/mnt/data/":
       ensure => directory,
       owner => root,
       group => mediaserver,
-      mode => 770;
+      mode => 0770;
 
     "/var/log/mediaserver":
       ensure => directory,
       owner => root,
       group => mediaserver,
-      mode => 770;
+      mode => 0770;
 
     "/mnt/data/Music":
       ensure => directory,
