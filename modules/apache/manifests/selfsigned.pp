@@ -4,9 +4,7 @@ define apache::selfsigned(
   $cert_location,
   $cert_org,
   $cert_orgunit,
-  $cert_cn
-
-){
+  $cert_cn){
 
   file {
     "/usr/bin/generate_self_signed.sh":

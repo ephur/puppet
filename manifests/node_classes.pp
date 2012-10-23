@@ -101,6 +101,8 @@ class media_server(){
     require => [File['/etc/media_server'],Group["mediaserver"]]
   }
 
+  include apache
+
   apache::selfsigned($cert_country => "US",
   $cert_state => "Texas",
   $cert_location => "San Antonio",
