@@ -60,8 +60,8 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
     ensure => 'present',
     runlevel => '345',
     action => 'respawn',
-    command => "/usr/bin/su - ${user} -c ${base_dir}/"
-    Require[File[""]]
+    command => "/usr/bin/su - ${user} -c /usr/bin/sabnzbd.sh"
+    Require[File["/usr/bin/sabnzbd.sh"]]
   }
 
   file {
@@ -82,8 +82,7 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
       source => "puppet:///modules/sabnzbd/post-process-scripts",
       mode => 0755;
 
-    "sabnzbd-inittab-script":
-      path => "/usr/bin/sabnzbd.sh",
+    "/usr/bin/sabnzbd.sh":
       owner => root,
       group => root,
       mode => 755,
