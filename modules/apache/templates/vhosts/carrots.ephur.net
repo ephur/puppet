@@ -38,7 +38,7 @@
         Require valid-user
     </Directory>
 
-  ProxyPass / http://localhost:9001/
-  ProxyPassReverse / http://localhost:9001/
+  ProxyPass /music http://localhost:9001/music
+  ProxyPassReverse /music http://localhost:9001/music
 
 </VirtualHost>

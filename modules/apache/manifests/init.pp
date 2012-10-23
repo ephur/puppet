@@ -17,7 +17,7 @@ class apache(){
     mode   => '0640';
   }
 
-  a2mod { ['proxy','ssl','rewrite']:
+  a2mod { ['proxy','ssl','rewrite','proxy_http']:
     ensure => present,
     notify => Service['apache2'];
   }
