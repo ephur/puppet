@@ -5,7 +5,7 @@ define apache::vhost($priority=10, $ensure = 'present') {
   file { "${priority}-${name}.conf":
     ensure  => $ensure,
     path    => "/etc/apache2/sites-enabled/${priority}-${name}.conf",
-    content => template("vhost/$template"),
+    content => template("apache/vhost/${name}"),
     owner   => 'root',
     group   => 'root',
     mode    => '0755',
