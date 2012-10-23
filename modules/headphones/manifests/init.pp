@@ -48,7 +48,7 @@ class headphones($user,$listen_port,$http_username,$http_password,
       content => template("headphones/headphones.sh.erb");
 
 	  "/${base_dir}/headphones.ini":
-	    ensure => presnent,
+	    ensure => present,
 	    owner => headphones,
 	    group => headphones,
 	    mode => 640,
