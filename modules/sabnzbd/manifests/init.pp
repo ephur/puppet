@@ -60,8 +60,8 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
     ensure => 'present',
     runlevel => '345',
     action => 'respawn',
-    command => "/usr/bin/su - ${user} -c /usr/bin/sabnzbd.sh"
-    Require[File["/usr/bin/sabnzbd.sh"]]
+    command => "/usr/bin/su - ${user} -c /usr/bin/sabnzbd.sh",
+    require[File["/usr/bin/sabnzbd.sh"]]
   }
 
   file {
