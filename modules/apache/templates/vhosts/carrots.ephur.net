@@ -43,11 +43,21 @@
       Require valid-user
   </Directory>
 
+  <Location />
+      Order allow,deny
+      Allow from all
+      AuthName "You know what to do"
+      AuthType Basic
+      AuthBasicProvider file
+      AuthUserFile /etc/apache2/htpasswd
+      Require valid-user
+  </Location>
+
   <Location /downloads>
     order deny,allow
     deny from all
     allow from all
-    ProxyPass http://localhost:9000/sabnzbd
+      ProxyPass http://localhost:9000/sabnzbd
     ProxyPassReverse http://localhost:9000/sabnzbd
   </Location>
 
