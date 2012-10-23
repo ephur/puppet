@@ -93,7 +93,7 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
         "symlink_sab_nzb_to_sickbeard.ini":
           path => "/${base_dir}/post-process-scripts/autoProcessTV.cfg",
           ensure => link,
-          source => "/${base_dir}/sab_nzb_to_sickbeard.ini",
+          source => "${base_dir}/sab_nzb_to_sickbeard.ini",
           require => [File['sab_nzb_to_sickbeard.ini']];
       }
     }
