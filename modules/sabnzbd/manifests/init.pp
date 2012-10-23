@@ -82,19 +82,19 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
       err("password or username not set, disable sickbeard integration or update pass sickbeard_pass and sickbeard_user to the module")
     } else {
       file {
-        "sab_nzb_to_sickbeard.ini":
-          path => "/$base_dir/sab_nzb_to_sickbeard.ini",
+        "sabnzbd_to_sickbeard.ini":
+          path => "/$base_dir/sabnzbd_to_sickbeard.ini",
           ensure => present,
           owner => $user,
           group => $use_group,
           mode => 0640,
-          content => template("sabnzbd/sab_nzb_to_sickbeard.ini.erb");
+          content => template("sabnzbd/sabnzbd_to_sickbeard.ini.erb");
 
         "symlink_sab_nzb_to_sickbeard.ini":
           path => "/${base_dir}/post-process-scripts/autoProcessTV.cfg",
           ensure => link,
           source => "${base_dir}/sab_nzb_to_sickbeard.ini",
-          require => [File['sab_nzb_to_sickbeard.ini']];
+          require => [File['sabnzbd_to_sickbeard.ini']];
       }
     }
   }
