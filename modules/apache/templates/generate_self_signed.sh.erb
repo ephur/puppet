@@ -13,8 +13,8 @@ yearmon()
 
 fqdn()
 {
-    (nslookup ${1} 2>&1 ¦¦ echo Name ${1}) \
-        ¦ tail -3 ¦ grep Name¦ sed -e 's,.*e:[ \t]*,,'
+    (nslookup ${1} 2>&1 || echo Name ${1}) \
+        | tail -3 | grep Name| sed -e 's,.*e:[ \t]*,,'
 }
 
 C=<%= @cert_country %>
