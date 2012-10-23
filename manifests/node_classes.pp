@@ -94,6 +94,9 @@ class media_server(){
     require => [File['/etc/media_server'],Group["mediaserver"]]
   }
 
+
+  class {'apache':  }
+
   include couchpotato
   include sickbeard
   include headphones
