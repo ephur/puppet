@@ -38,10 +38,21 @@
         Require valid-user
     </Directory>
 
-  ProxyPass /downloads http://localhost:9000
-  ProxyPassReverse /downloads http://localhost:9000
+    <Location /downloads>
+    order deny,allow
+    deny from all
+    allow from all
+    ProxyPass http://localhost:9000/sabnzbd
+    ProxyPassReverse http://localhost:9000/sabnzbd
+    </Location>
 
-  ProxyPass /music http://localhost:9001/music
-  ProxyPassReverse /music http://localhost:9001/music
+    <Location /music>
+      order deny,allow
+      deny from all
+      allow from all
+      ProxyPass /music http://localhost:9001/music
+      ProxyPassReverse /music http://localhost:9001/music
+    </Location>
+
 
 </VirtualHost>
