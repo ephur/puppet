@@ -103,12 +103,12 @@ class media_server(){
 
   include apache
 
-  apache::selfsigned($cert_country => "US",
-  $cert_state => "Texas",
-  $cert_location => "San Antonio",
-  $cert_org => "Personal",
-  $cert_orgunit => "Personal Cloud",
-  $cert_cn => "carrots.ephur.net" )
+  # apache::selfsigned($cert_country => "US",
+  # $cert_state => "Texas",
+  # $cert_location => "San Antonio",
+  # $cert_org => "Personal",
+  # $cert_orgunit => "Personal Cloud",
+  # $cert_cn => "carrots.ephur.net" )
 
   apache::vhost("carrots.ephur.net")
 
