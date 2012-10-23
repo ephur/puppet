@@ -7,56 +7,50 @@
 </VirtualHost>
 
 <VirtualHost *:443>
-    # Basic server settings
-    ServerName integrity.slicehost.com
+  # Basic server settings
+  ServerName integrity.slicehost.com
 
-    RewriteEngine On
+  RewriteEngine On
+  RewriteCond %{REQUEST_URI} ^/downloads
+  RewriteBase /downloads
+  RewriteRule ^/downloads(.*)$ http://localhost:9000/sabnzbd$1 [P]
 
-    # Log settings
-    CustomLog ${APACHE_LOG_DIR}/carrot.ephur.net_access.log combined
-    ErrorLog ${APACHE_LOG_DIR}/carrot.ephur.net_error.log
-    LogLevel info
-    LogLevel warn
 
-    # SSL Settings
-    SSLEngine on
-    SSLCertificateKeyFile /etc/apache2/ssl/carrots.ephur.net.key
-    SSLCertificateFile    /etc/apache2/ssl/carrots.ephur.net.cert
+  # Log settings
+  CustomLog ${APACHE_LOG_DIR}/carrot.ephur.net_access.log combined
+  ErrorLog ${APACHE_LOG_DIR}/carrot.ephur.net_error.log
+  LogLevel info
+  LogLevel warn
 
-    BrowserMatch "MSIE [2-6]" \
-                nokeepalive ssl-unclean-shutdown \
-                downgrade-1.0 force-response-1.0
-    BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
+  # SSL Settings
+  SSLEngine on
+  SSLCertificateKeyFile /etc/apache2/ssl/carrots.ephur.net.key
+  SSLCertificateFile    /etc/apache2/ssl/carrots.ephur.net.cert
 
-    DocumentRoot /var/www
+  BrowserMatch "MSIE [2-6]" \
+              nokeepalive ssl-unclean-shutdown \
+              downgrade-1.0 force-response-1.0
+  BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
 
-    <Directory /var/www/>
-        Order allow,deny
-        Allow from all
-        AuthName "You know what to do"
-        AuthType Basic
-        AuthBasicProvider file
-        AuthUserFile /etc/apache2/htpasswd
-        Require valid-user
-    </Directory>
+  DocumentRoot /var/www
 
-    <Location /downloads>
-      order deny,allow
-      deny from all
-      allow from all
-      #ProxyPass http://localhost:9000/sabnzbd
-      #ProxyPassReverse http://localhost:9000/sabnzbd
-      RewriteBase /downloads
-      RewriteRule ^(.*)$ http://localhost:9000/sabnzbd/$1 [P]
-    </Location>
+  <Directory /var/www/>
+      Order allow,deny
+      Allow from all
+      AuthName "You know what to do"
+      AuthType Basic
+      AuthBasicProvider file
+      AuthUserFile /etc/apache2/htpasswd
+      Require valid-user
+  </Directory>
 
-    <Location /music>
-      order deny,allow
-      deny from all
-      allow from all
-      ProxyPass http://localhost:9001/music
-      ProxyPassReverse http://localhost:9001/music
-    </Location>
+  <Location /music>
+    order deny,allow
+    deny from all
+    allow from all
+    ProxyPass http://localhost:9001/music
+    ProxyPassReverse http://localhost:9001/music
+  </Location>
 
 
 </VirtualHost>
