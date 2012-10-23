@@ -18,6 +18,13 @@ class media_server(){
     mode => 755
   }
 
+  file { "/var/log/mediaserver":
+    ensure => directory,
+    owner => root,
+    group => mediaserver,
+    mode => 770
+  }
+
   group { "mediaserver":
     ensure => "present",
   }
@@ -42,6 +49,7 @@ class media_server(){
     use_headphones => 1,
     nzbmatrix_username => $sabnzbd_nzbmatrix_username,
     nzbmatrix_password => $sabnzbd_nzbmatrix_password,
+    log_path => "/var/log/mediaserver",
     require => [File['/etc/media_server'],Group["mediaserver"]]
   }
 
