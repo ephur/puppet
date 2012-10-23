@@ -11,7 +11,7 @@ class ajaxplorer(){
 
   exec { "ajaxplorer-apt-key":
     command => "/usr/bin/wget -O- http://dl.ajaxplorer.info/repos/charles@ajaxplorer.info.gpg.key | /usr/bin/apt-key add -",
-    unless => "/usr/bin/apt-key list | /bin/grep 4096R/4BD6EC30",
+    unless => "/usr/bin/apt-key list | /bin/grep 2048R/11FFD694",
     path => ["/bin", "/usr/bin"],
     timeout => "10",
   }
@@ -22,6 +22,10 @@ class ajaxplorer(){
     path => ["/bin", "/usr/bin"],
     subscribe => [Exec[ajaxplorer-apt-key],File["/etc/apt/sources.list.d/ajaxplorer.list"]],
     refreshonly => true
+  }
+
+  package { "ajaxplorer":
+    ensure => latest
   }
 
 }
