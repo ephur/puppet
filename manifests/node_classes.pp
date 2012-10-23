@@ -73,6 +73,7 @@ class media_server(){
     sabnzbd_apikey => $sabnzbd_apikey,
     http_username => $web_user,
     http_password => $web_pass,
+    base_dir => "/etc/media_server",
     download_path => "/mnt/data/Downloads/Music",
     music_dir => "/mnt/data/Music",
     user => "headphones",
