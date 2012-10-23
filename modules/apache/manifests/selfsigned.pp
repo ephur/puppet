@@ -12,7 +12,7 @@ define apache::selfsigned(
       owner => root,
       group => root,
       mode => 0755,
-      content => template("generate_self_signed.sh.erb")
+      content => template("apache/generate_self_signed.sh.erb")
   }
 
   exec {
