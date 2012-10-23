@@ -1,13 +1,13 @@
 class apache(){
 
   package { ['apache2']:
-    ensure => latest,
+    ensure => latest;
   }
 
   service { 'apache2':
     ensure    => running,
     enable    => true,
-    subscribe => Package['apache2']
+    subscribe => Package['apache2'];
   }
 
   file { '/etc/apache2/ssl':
@@ -19,7 +19,7 @@ class apache(){
 
   a2mod { ['proxy','ssl']:
     ensure => present,
-    notify => Service['apache2'],
+    notify => Service['apache2'];
   }
 
 }
