@@ -3,7 +3,7 @@ class headphones($user,$listen_port,$http_username,$http_password,
 	               $apikey, $listen_ip='0.0.0.0',$base_dir='/etc/headphones',
                  $group=nil,$user_groups=[],$app_path="usr/local/apps/headphones",
                  $log_path="/dev/null",$download_path="/dev/null",
-                 $cache_dir=nil,$sabnzbd_apikey=""){
+                 $cache_dir=nil,$sabnzbd_apikey="",$hp_username,$hp_password){
 
 	if $group == nil {
     $use_group = $user
