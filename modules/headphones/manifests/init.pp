@@ -1,5 +1,5 @@
 class headphones($user,$listen_port,$http_username,$http_password,
-	               $music_dir,$nzbmatrix_username,$nzbmatrix_password,
+	               $music_dir,$nzbmatrix_username,$nzbmatrix_apikey,
 	               $apikey, $listen_ip='0.0.0.0',$base_dir='/etc/headphones',
                  $group=nil,$user_groups=[],$app_path="usr/local/apps/headphones",
                  $log_path="/dev/null",$download_path="/dev/null",
