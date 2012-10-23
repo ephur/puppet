@@ -97,7 +97,7 @@ class media_server(){
 
   class {'apache':  }
 
-  class {'ajaxplorer': }
+  include ajaxplorer
 
   include couchpotato
   include sickbeard
