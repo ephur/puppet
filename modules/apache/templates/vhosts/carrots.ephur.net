@@ -12,7 +12,6 @@
 
   RewriteEngine On
   RewriteCond %{REQUEST_URI} ^/downloads
-  RewriteBase /downloads
   RewriteRule ^/downloads(.*)$ http://localhost:9000/sabnzbd$1 [P]
 
 
