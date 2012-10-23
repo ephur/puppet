@@ -30,6 +30,7 @@ class media_server(){
   }
 
   class { "sabnzbd":
+    listen_port => 9000,
     apikey => $sabnzbd_apikey,
     nzbkey => $sabnzbd_nzbkey,
     webuser => $web_user,
