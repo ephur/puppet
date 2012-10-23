@@ -36,7 +36,7 @@ class media_server(){
     sickbeard_pass => $web_pass,
     user => "sabnzbd",
     group => "sabnzbd",
-    user_groups => ["media_server"],
+    user_groups => ["mediaserver"],
     base_dir => "/etc/media_server",
     use_couchpotato => 1,
     use_headphones => 1,
