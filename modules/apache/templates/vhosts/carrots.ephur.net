@@ -50,8 +50,8 @@
       order deny,allow
       deny from all
       allow from all
-      ProxyPass /music http://localhost:9001/music
-      ProxyPassReverse /music http://localhost:9001/music
+      ProxyPass http://localhost:9001/music
+      ProxyPassReverse http://localhost:9001/music
     </Location>
 
 
