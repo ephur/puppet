@@ -9,7 +9,7 @@ define apache::vhost($priority=10, $ensure = 'present') {
     owner   => 'root',
     group   => 'root',
     mode    => '0755',
-    require => [Package['httpd']],
-    notify  => Service['httpd'],
+    require => [Package['apache2']],
+    notify  => Service['apache2'],
   }
 }
