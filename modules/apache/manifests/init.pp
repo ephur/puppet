@@ -13,10 +13,10 @@ class apache(){
     ensure => directory,
     owner => root,
     group => root,
-    mode 0640
+    mode => 0640;
   }
 
-  a2mod { "proxy","ssl":
+  a2mod { ["proxy","ssl"]:
     ensure => present,
     notify => Service["apache2"],
   }
