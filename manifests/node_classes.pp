@@ -2,10 +2,6 @@ class base(){
   # Common / Shared components don't reorder these
   include stdlib
 
-  Vcsrepo {
-    provider => git
-  }
-
   # Only other include that should ever be in base is common
   # if it's another module include it from common so all
   # includes are in one place
