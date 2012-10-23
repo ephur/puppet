@@ -17,11 +17,11 @@ fqdn()
         ¦ tail -3 ¦ grep Name¦ sed -e 's,.*e:[ \t]*,,'
 }
 
-C=<%= @cert_c %>
-ST=<%= @cert_st %>
-L=<%= @cert_l %>
-O=<%= @cert_o %>
-OU<%= @cert_ou %>
+C=<%= @cert_country %>
+ST=<%= @cert_state %>
+L=<%= @cert_location %>
+O=<%= @cert_org %>
+OU<%= @cert_orgunit %>
 CN<%= @name %>
 DATE=`yearmon`
 
