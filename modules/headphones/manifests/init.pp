@@ -1,6 +1,6 @@
 class headphones($username,$listen_port,$http_username,$http_password,$music_dir,$listen_ip='0.0.0.0',$base_dir='/etc/headphones',
                  $group=nil,$user_groups=[],$app_path="usr/local/apps/headphones",$log_path="/dev/null",$download_path="/dev/null",
-                 $cache_dir=nil
+                 $cache_dir=nil,$sabnzbd_apikey=""
 	){
 
 	if $group == nil {
