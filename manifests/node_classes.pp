@@ -101,12 +101,10 @@ class media_server(){
     require => [File['/etc/media_server'],Group["mediaserver"]]
   }
 
+  include apache
   include couchpotato
   include sickbeard
   include headphones
-
-  # File["/etc/media_server"] -> Class["sabnzbd"]
-
 }
 
 class rabbit(){
