@@ -30,6 +30,13 @@ class media_server(){
       group => mediaserver,
       mode => 0770;
 
+    "/mnt/data/Downloads/Music":
+      ensure => directory,
+      owner => "sabnzbd",
+      group => "mediaserver",
+      require => [Class["sabnzbd","headphones"]],
+      mode => 0775;
+
     "/mnt/data/Music":
       ensure => directory,
       owner => "headphones",
