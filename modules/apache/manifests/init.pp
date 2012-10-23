@@ -9,7 +9,16 @@ class apache(){
     subscribe => Package['apache2']
   }
 
-  a2mod { "proxy":
-    ensure => present
+  file { "/etc/apache2/ssl":
+    ensure => directory,
+    owner => root,
+    group => root,
+    mode 0640
   }
+
+  a2mod { "proxy","ssl":
+    ensure => present,
+    notify => Service["apache2"],
+  }
+
 }

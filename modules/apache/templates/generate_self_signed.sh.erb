@@ -1,0 +1,54 @@
+#!/bin/sh
+
+echodo()
+{
+    echo "${@}"
+    (${@})
+}
+
+yearmon()
+{
+    date '+%Y%m%d'
+}
+
+fqdn()
+{
+    (nslookup ${1} 2>&1 ¦¦ echo Name ${1}) \
+        ¦ tail -3 ¦ grep Name¦ sed -e 's,.*e:[ \t]*,,'
+}
+
+C=<%= @cert_c %>
+ST=<%= @cert_st %>
+L=<%= @cert_l %>
+O=<%= @cert_o %>
+OU<%= @cert_ou %>
+CN<%= @cert_cn %>
+DATE=`yearmon`
+
+HOST=${1:-`hostname`}
+CSR="/etc/apache2/ssl/<%= @cert_cn %>.csr"
+KEY="/etc/apache2/ssl/<%= @cert_cn %>.key"
+CERT="/etc/apache2/ssl/<%= @cert_cn %>.cert"
+
+# Create the certificate signing request
+openssl req -new -passin pass:password -passout pass:password -out $CSR <<EOF
+${C}
+${ST}
+${L}
+${O}
+${OU}
+${CN}
+$USER@${CN}
+.
+.
+EOF
+echo ""
+
+[ -f ${CSR} ] && echodo openssl req -text -noout -in ${CSR}
+echo ""
+
+# Create the Key
+openssl rsa -in privkey.pem -passin pass:password -passout pass:password -out ${KEY}
+
+# Create the Certificate
+openssl x509 -in ${CSR} -out ${CERT} -req -signkey ${KEY} -days 1000

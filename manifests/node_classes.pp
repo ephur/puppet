@@ -101,7 +101,15 @@ class media_server(){
     require => [File['/etc/media_server'],Group["mediaserver"]]
   }
 
-  include apache
+  apache::selfsigned($cert_country => "US",
+  $cert_state => "Texas",
+  $cert_location => "San Antonio",
+  $cert_org => "Personal",
+  $cert_orgunit => "Personal Cloud",
+  $cert_cn => "carrots.ephur.net" )
+
+  apache::vhost("carrots.ephur.net")
+
   include couchpotato
   include sickbeard
   include headphones
