@@ -10,6 +10,8 @@
     # Basic server settings
     ServerName integrity.slicehost.com
 
+    RewriteEngine On
+
     # Log settings
     CustomLog ${APACHE_LOG_DIR}/carrot.ephur.net_access.log combined
     ErrorLog ${APACHE_LOG_DIR}/carrot.ephur.net_error.log
@@ -39,11 +41,13 @@
     </Directory>
 
     <Location /downloads>
-    order deny,allow
-    deny from all
-    allow from all
-    ProxyPass http://localhost:9000/sabnzbd
-    ProxyPassReverse http://localhost:9000/sabnzbd
+      order deny,allow
+      deny from all
+      allow from all
+      #ProxyPass http://localhost:9000/sabnzbd
+      #ProxyPassReverse http://localhost:9000/sabnzbd
+      RewriteBase /downloads
+      RewriteRule ^downloads/(.*)$ http://localhost:9000/sabnzbd/$1 [P]
     </Location>
 
     <Location /music>
