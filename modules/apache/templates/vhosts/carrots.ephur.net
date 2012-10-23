@@ -47,7 +47,7 @@
       #ProxyPass http://localhost:9000/sabnzbd
       #ProxyPassReverse http://localhost:9000/sabnzbd
       RewriteBase /downloads
-      RewriteRule ^downloads/(.*)$ http://localhost:9000/sabnzbd/$1 [P]
+      RewriteRule ^(.*)$ http://localhost:9000/sabnzbd/$1 [P]
     </Location>
 
     <Location /music>
