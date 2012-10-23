@@ -99,19 +99,20 @@ class media_server(){
     hp_username => $musicbrain_vip_username,
     hp_password => $musicbrain_vip_password,
     sabnzbd_server => "https://localhost:9000",
-    require => [File['/etc/media_server'],Group["mediaserver"]]
+    require => [File['/etc/media_server'],Group["mediaserver"]];
   }
 
+  apache::selfsigned{ "carrots.ephur.net":
+    cert_country => "US",
+    cert_state => "Texas",
+    cert_location => "San Antonio",
+    cert_org => "Personal",
+    cert_orgunit => "Personal Cloud"
+  }
 
-
-  apache::selfsigned{ $cert_country => "US",
-    $cert_state => "Texas",
-    $cert_location => "San Antonio",
-    $cert_org => "Personal",
-    $cert_orgunit => "Personal Cloud",
-    $cert_cn => "carrots.ephur.net" }
-
-  apache::vhost{ "carrots.ephur.net" }
+  apache::vhost{ "carrots.ephur.net":
+    order => 10
+  }
 
   include couchpotato
   include sickbeard

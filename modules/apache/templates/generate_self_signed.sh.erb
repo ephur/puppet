@@ -22,13 +22,13 @@ ST=<%= @cert_st %>
 L=<%= @cert_l %>
 O=<%= @cert_o %>
 OU<%= @cert_ou %>
-CN<%= @cert_cn %>
+CN<%= @name %>
 DATE=`yearmon`
 
 HOST=${1:-`hostname`}
-CSR="/etc/apache2/ssl/<%= @cert_cn %>.csr"
-KEY="/etc/apache2/ssl/<%= @cert_cn %>.key"
-CERT="/etc/apache2/ssl/<%= @cert_cn %>.cert"
+CSR="/etc/apache2/ssl/<%= @name %>.csr"
+KEY="/etc/apache2/ssl/<%= @name %>.key"
+CERT="/etc/apache2/ssl/<%= @name %>.cert"
 
 # Create the certificate signing request
 openssl req -new -passin pass:password -passout pass:password -out $CSR <<EOF

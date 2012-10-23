@@ -1,4 +1,4 @@
-define apache::vhost($name, $ensure = 'present') {
+define apache::vhost($priority=10, $ensure = 'present') {
 
   include apache
 
