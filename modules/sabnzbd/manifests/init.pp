@@ -86,7 +86,7 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
       owner => root,
       group => root,
       mode => 755,
-      content => template("sabnzbd/sabnzbd.sh")
+      content => template("sabnzbd/sabnzbd.sh.erb")
    }
 
   file {
