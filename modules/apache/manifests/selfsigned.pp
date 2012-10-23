@@ -3,8 +3,8 @@ define apache::selfsigned(
   $cert_state,
   $cert_location,
   $cert_org,
-  $cert_orgunit,
-  $cert_cn){
+  $cert_orgunit
+  ){
 
   file {
     "/usr/bin/generate_self_signed.sh":
@@ -17,6 +17,6 @@ define apache::selfsigned(
 
   exec {
     "/usr/bin/generate_self_signed.sh":
-      creates => "/etc/apache2/ssl/${cert_cn}.csr",
+      creates => "/etc/apache2/ssl/${name}.csr",
   }
 }
