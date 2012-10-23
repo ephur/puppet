@@ -38,6 +38,9 @@
         Require valid-user
     </Directory>
 
+  ProxyPass /downloads https://localhost:9000
+  ProxyPassReverse /downloads https://localhost:9000
+
   ProxyPass /music http://localhost:9001/music
   ProxyPassReverse /music http://localhost:9001/music
 
