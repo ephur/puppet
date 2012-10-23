@@ -52,3 +52,7 @@ openssl rsa -in privkey.pem -passin pass:password -passout pass:password -out ${
 
 # Create the Certificate
 openssl x509 -in ${CSR} -out ${CERT} -req -signkey ${KEY} -days 1000
+
+chmod 644 $CSR
+chmod 600 $KEY
+chmod 644 $CERT

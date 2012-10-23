@@ -110,6 +110,11 @@ class media_server(){
     cert_orgunit => "Personal Cloud"
   }
 
+  apache::vhost{ "default":
+    priority => '000',
+    ensure => absent
+  }
+
   apache::vhost{ "carrots.ephur.net":
     priority => 10
   }
