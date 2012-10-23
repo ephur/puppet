@@ -31,7 +31,7 @@
     <Directory /var/www/>
         Order allow,deny
         Allow from all
-        AuthName ""
+        AuthName "You know what to do"
         AuthType Basic
         AuthBasicProvider file
         AuthUserFile /etc/apache2/htpasswd
