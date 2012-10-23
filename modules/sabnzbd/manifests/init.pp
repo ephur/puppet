@@ -27,7 +27,7 @@ class sabnzbd($apikey,$webuser,$listen_port=8080,$webpass,$nntp_hostname,$nntp_u
     }
   }
 
-  package {["python","python-cheetah","python-configobj","python-feedparser","python-dbus","python-openssl","python-support","python-yenc","par2","unzip","unrar-free"]:
+  package {["python","python-cheetah","python-configobj","python-feedparser","python-dbus","python-openssl","python-support","python-yenc","par2","unzip","unrar"]:
     ensure => latest
   }
 
