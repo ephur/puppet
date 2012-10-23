@@ -11,25 +11,30 @@ class base(){
 class media_server(){
   include base
 
-  file { "/etc/media_server/":
-    ensure => directory,
-    owner => root,
-    group => root,
-    mode => 755
-  }
+  file {
+    "/etc/media_server/":
+      ensure => directory,
+      owner => root,
+      group => root,
+      mode => 755,
 
-  file { "/mnt/data":
-    ensure => directory,
-    owner => root,
-    group => mediaserver,
-    mode => 770
-  }
+    "/mnt/data/":
+      ensure => directory,
+      owner => root,
+      group => mediaserver,
+      mode => 770;
 
-  file { "/var/log/mediaserver":
-    ensure => directory,
-    owner => root,
-    group => mediaserver,
-    mode => 770
+    "/var/log/mediaserver":
+      ensure => directory,
+      owner => root,
+      group => mediaserver,
+      mode => 770;
+
+    "/mnt/data/Music":
+      ensure => directory,
+      owner => "headphones",
+      group => "headphones"
+      mode => 0775;
   }
 
   group { "mediaserver":
@@ -55,10 +60,26 @@ class media_server(){
     base_dir => "/etc/media_server",
     use_couchpotato => 1,
     use_headphones => 1,
-    nzbmatrix_username => $sabnzbd_nzbmatrix_username,
-    nzbmatrix_password => $sabnzbd_nzbmatrix_password,
+    nzbmatrix_username => $nzbmatrix_username,
+    nzbmatrix_password => $nzbmatrix_password,
     log_path => "/var/log/mediaserver",
     download_path => "/mnt/data/Downloads",
+    require => [File['/etc/media_server'],Group["mediaserver"]]
+  }
+
+  class { "headphones":
+    listen_port => 9001,
+    apikey => $headphones_apikey,
+    sabnzbd_apikey => $sabnzbd_apikey,
+    http_username => $web_user,
+    http_password => $web_pass,
+    download_path => "/mnt/data/Downloads/Music",
+    music_dir => "/mnt/data/Music",
+    user => "headphones",
+    group => "headphones",
+    user_groups => ["mediaserver"],
+    nzbmatrix_password => $nzbmatrix_password,
+    nzbmatrix_username => $nzbmatrix_username,
     require => [File['/etc/media_server'],Group["mediaserver"]]
   }
 

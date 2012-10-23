@@ -2,13 +2,17 @@ class sabnzbd($apikey,$webuser,$listen_port=8080,$webpass,$nntp_hostname,$nntp_u
               $nntp_ssl=0,$nntp_connections=10,$nntp_retention=0,$sickbeard_hostname=nil,$sickbeard_ssl=1,
               $sickbeard_port=8081,$sickbeard_user=nil,$sickbeard_pass=nil,$nzbkey=nil,
               $bwlimit="none",$base_dir='/etc/sabnzbd',$user=root,$group=nil,$nzb_upload_dir="",
-              $use_couchpotato = 0, $use_headphones=0, $nzbmatrix_username=nil, $nzbmatrix_password=nil,
+              $use_couchpotato = 0, $use_headphones=1, $headphones_download_path=nil, $nzbmatrix_username=nil, $nzbmatrix_password=nil,
               $path='usr/local/apps/sabnzbd',$download_path="Downloads",$log_path="/dev/null",$user_groups=[]){
 
   if $nntp_port == 119 and $nntp_ssl == 1 {
     $use_nntp_port = 563
   } else {
     $use_nntp_port = $nntp_port
+  }
+
+  if $use_headphones and ($music_dir == nil) {
+    err("when using headphones, you must provide a music dir")
   }
 
   if $group == nil {
