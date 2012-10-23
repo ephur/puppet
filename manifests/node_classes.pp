@@ -18,6 +18,10 @@ class media_server(){
     mode => 755
   }
 
+  group { "mediaserver":
+    ensure => "present",
+  }
+
   class { "sabnzbd":
     apikey => $sabnzbd_apikey,
     nzbkey => $sabnzbd_nzbkey,
@@ -32,12 +36,13 @@ class media_server(){
     sickbeard_pass => $web_pass,
     user => "sabnzbd",
     group => "sabnzbd",
+    user_groups => ["media_server"]
     base_dir => "/etc/media_server",
     use_couchpotato => 1,
     use_headphones => 1,
     nzbmatrix_username => $sabnzbd_nzbmatrix_username,
     nzbmatrix_password => $sabnzbd_nzbmatrix_password,
-    require => [File['/etc/media_server']]
+    require => [File['/etc/media_server'],Group["mediaserver"]]
   }
 
   include couchpotato

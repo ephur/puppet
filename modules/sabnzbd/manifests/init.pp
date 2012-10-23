@@ -3,7 +3,7 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
               $sickbeard_port=8081,$sickbeard_user=nil,$sickbeard_pass=nil,$nzbkey=nil,
               $bwlimit="none",$base_dir='/etc/sabnzbd',$user=root,$group=nil,$nzb_upload_dir="",
               $use_couchpotato = 0, $use_headphones=0, $nzbmatrix_username=nil, $nzbmatrix_password=nil,
-              $path='usr/local/apps/sabnzbd'){
+              $path='usr/local/apps/sabnzbd',$download_path="Downloads",$log_path="/dev/null",$user_groups=[]){
 
   if $nntp_port == 119 and $nntp_ssl == 1 {
     $use_nntp_port = 563
@@ -39,6 +39,7 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
   user { $user:
     ensure => present,
     gid => $user,
+    groups => $user_groups,
     home => "/home/$user",
     comment => "User for SABNZBD Service",
     managehome => true,
@@ -60,7 +61,7 @@ class sabnzbd($apikey,$webuser,$webpass,$nntp_hostname,$nntp_user,$nntp_pass,$nz
     ensure => 'present',
     runlevel => '345',
     action => 'respawn',
-    command => "/usr/bin/su - ${user} -c /usr/bin/sabnzbd.sh",
+    command => "/bin/su - ${user} -c /usr/bin/sabnzbd.sh",
     require => [File["/usr/bin/sabnzbd.sh"]]
   }
 

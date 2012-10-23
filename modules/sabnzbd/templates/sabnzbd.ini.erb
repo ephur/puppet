@@ -1,7 +1,7 @@
 __version__ = 19
 
 [misc]
-admin_dir = admin
+admin_dir = /<%= @path %>/admin
 allow_64bit_tools = 1
 allow_incomplete_nzb = 0
 allow_streaming = 0
@@ -16,7 +16,7 @@ cache_dir = cache
 cache_limit = 200M
 check_new_rel = 0
 cleanup_list = ,
-complete_dir = Downloads/complete
+complete_dir = <%= @download_dir %>/complete
 config_lock = 0
 create_group_folders = 0
 <% if @sickbeard_host != nil %>
@@ -28,7 +28,7 @@ date_sort_string = ""
 dirscan_dir = "<%= @nzb_upload_dir %>"
 dirscan_speed = 5
 disable_api_key = 0
-download_dir = Downloads/incomplete
+download_dir = <%= @download_dir %>/incomplete
 download_free = 1G
 email_account = ""
 email_dir = ""
@@ -61,7 +61,7 @@ ignore_unrar_dates = 0
 ignore_wrong_unrar = 0
 ionice = ""
 language = en
-log_dir = logs
+log_dir = <%= @log_path %>
 login_realm = SABnzbd
 max_art_opt = 0
 max_art_tries = 3
