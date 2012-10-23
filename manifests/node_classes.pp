@@ -51,7 +51,7 @@ class media_server(){
   add_user { "$unix_user":
     ensure => present,
     id => $unix_user_id,
-    ssh_key => $unix_ssh_pubkey,
+    ssh_key => $unix_user_pubkey,
     groups => ['mediaserver']
   }
 
@@ -101,7 +101,6 @@ class media_server(){
     require => [File['/etc/media_server'],Group["mediaserver"]]
   }
 
-  include ajaxplorer
   include couchpotato
   include sickbeard
   include headphones
