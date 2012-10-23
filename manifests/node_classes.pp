@@ -111,7 +111,7 @@ class media_server(){
   }
 
   apache::vhost{ "carrots.ephur.net":
-    order => 10
+    priority => 10
   }
 
   include couchpotato
