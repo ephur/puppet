@@ -1,3 +1,4 @@
 #!/bin/sh
 
-chown -R headphones:headphones $1
+chgrp -R mediaserver /mnt/data/Downloads/Music
+chmod g+w /mnt/data/Downloads/Music
