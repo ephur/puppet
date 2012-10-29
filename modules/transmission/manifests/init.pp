@@ -23,7 +23,7 @@ class transmission($download_dir="/mnt/data/Downloads/torrent-incomplete",){
       ensure  => directory,
       owner   => debian-transmission,
       group   => mediaserver,
-      mode    => 0755,
+      mode    => 0775,
       require => Package["transmission-daemon"]
   }
 
