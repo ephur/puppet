@@ -16,6 +16,7 @@ class transmission($download_dir="/mnt/data/Downloads/torrent-incomplete",){
       owner   => debian-transmission, 
       group   => mediaserver,
       mode    => 0644, 
+      content => template("transmission/settings.json.erb"),
       require => Package["transmission-daemon"]; 
  
     ["/mnt/data/Downloads/torrent-incomplete", "/mnt/data/Downloads/torrent-complete", "/mnt/data/Downloads/torrents"]:
