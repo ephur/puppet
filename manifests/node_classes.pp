@@ -120,6 +120,7 @@ class media_server(){
     priority => 001
   }
 
+  include transmission
   include couchpotato
   include sickbeard
   include headphones
