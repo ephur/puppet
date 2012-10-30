@@ -63,8 +63,8 @@
   <Location /torrents>
     Order allow,deny
     Allow from all
-    ProxyPass http://localhost:9091/
-    ProxyPassReverse http://localhost:9091
+    ProxyPass http://localhost:9091/transmission/web/
+    ProxyPassReverse http://localhost:9091/transmission/web/
   </Location>
 
 
