@@ -60,5 +60,13 @@
     ProxyPassReverse http://localhost:9001/music
   </Location>
 
+  <Location /torrents>
+    Order allow,deny
+    Allow from all
+    ProxyPass http://localhost:9091/
+    ProxyPassReverse http://localhost:9091
+  </Location>
+
+
 
 </VirtualHost>
