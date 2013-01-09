@@ -4,10 +4,10 @@ class transmission($download_dir="/mnt/data/Downloads/torrent-incomplete",){
     ensure =>  latest
   }
 
-  service { "transmission-daemon":
-    ensure  => running,
-    require => [Package["transmission-daemon"],File["/etc/transmission-daemon/settings.json"]]
-  }
+  #service { "transmission-daemon":
+  #  ensure  => running,
+  #  require => [Package["transmission-daemon"],File["/etc/transmission-daemon/settings.json"]]
+  #}
 
   file {
 
