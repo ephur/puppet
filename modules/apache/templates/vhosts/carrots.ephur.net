@@ -60,13 +60,14 @@
     ProxyPassReverse http://localhost:9001/music
   </Location>
 
-  <Location /torrents>
+  <Location /transmission>
     Order allow,deny
     Allow from all
-    ProxyPass http://localhost:9091/transmission/web/
-    ProxyPassReverse http://localhost:9091/transmission/web/
+    RewriteEngine On
+    RewriteRule /transmission[/]?$ /transmission/web [R=permanent]
+    ProxyPass http://localhost:9091/transmission
+    ProxyPassReverse http://localhost:9091/transmission
   </Location>
-
 
 
 </VirtualHost>
