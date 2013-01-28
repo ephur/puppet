@@ -1,10 +1,8 @@
 class base(){
-  # Common / Shared components don't reorder these
+  # The order of these matters
   include stdlib
 
-  # Only other include that should ever be in base is common
-  # if it's another module include it from common so all
-  # includes are in one place
+  # Common is applied to all of the base configurations 
   include common
 }
 
@@ -14,6 +12,11 @@ class web-db(){
   class { 'mysql::server': 
     config_hash => { 'root_password' => $db_root_pw }
   }
+}
+
+class web(){ 
+  class {'apache':  }
+  class {'apache::mod::php': }
 }
 
 class media_server(){
