@@ -110,23 +110,27 @@ class media_server(){
     sabnzbd_server => "http://localhost:9000",
     require => [File['/etc/media_server'],Group["mediaserver"]];
   }
-
-  apache::selfsigned{ "carrots.ephur.net":
-    cert_country => "US",
-    cert_state => "Texas",
-    cert_location => "San Antonio",
-    cert_org => "Personal",
-    cert_orgunit => "Personal Cloud"
-  }
-
-  apache::vhost{ "default":
-    priority => '000',
-    ensure => absent
-  }
-
-  apache::vhost{ "carrots.ephur.net":
-    priority => 001
-  }
+#####################################################################
+# Apache for media server is not under puppet control at the moment #
+# refactoring to use the puppetlabs apache module instead of this   #
+# quick, but not dynamic module.                                    #
+#####################################################################
+###   apache::selfsigned{ "carrots.ephur.net":
+###     cert_country => "US",
+###     cert_state => "Texas",
+###     cert_location => "San Antonio",
+###     cert_org => "Personal",
+###     cert_orgunit => "Personal Cloud"
+###   }
+### 
+###   apache::vhost{ "default":
+###     priority => '000',
+###    ensure => absent
+###  }
+###
+###  apache::vhost{ "carrots.ephur.net":
+###    priority => 001
+###  }
 
   include transmission
   include couchpotato
