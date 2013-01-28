@@ -8,6 +8,14 @@ class base(){
   include common
 }
 
+class web-db(){ 
+  class { 'mysql': }
+  
+  class { 'mysql::server': 
+    config_hash => { 'root_password' => $db_root_pw }
+  }
+}
+
 class media_server(){
   include base
   include apache
