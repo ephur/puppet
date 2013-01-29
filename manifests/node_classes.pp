@@ -21,7 +21,9 @@ class web(){
 
 class media_server(){
   include base
-  include apache
+  # This is NOT the right apache module...
+  # this module lives to break the fucking system
+  # include apache
 
   file {
     "/etc/media_server/":
