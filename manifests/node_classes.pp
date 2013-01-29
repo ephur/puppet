@@ -16,7 +16,6 @@ class web-db(){
 
 class web(){ 
   class {'apache':  }
-  class {'apache::mod::php': }
 }
 
 class media_server(){
