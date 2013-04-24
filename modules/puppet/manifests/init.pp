@@ -3,7 +3,7 @@ class puppet ($facter_versio=latest, $puppet_version=latest, $use_mcollective=fa
 
   case $operatingsystem { 
   
-    debian: { 
+    /^(Debian|Ubuntu)$/ : { 
 
       # Some versions of facter do not set this fact, so a small work around is needed
       # for backward compatibility, in particular because this module will be 
