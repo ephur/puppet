@@ -4,7 +4,7 @@ class common(){
 
   # Ensure packages
   case $operatingsystem {
-    "Debian": {
+    "Debian","Ubuntu": {
       package { ["curl", "wget", "vim", "git", "telnet", "ntp"]:
         ensure => latest
       }
