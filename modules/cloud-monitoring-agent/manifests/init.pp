@@ -21,7 +21,7 @@ class cloud-monitoring-agent ($facter_versio=latest, $cloudmonitoring_version=la
 
       exec { "cloudmonitoring-apt-key": 
         command => "/usr/bin/wget -O- https://monitoring.api.rackspacecloud.com/pki/agent/linux.asc | /usr/bin/apt-key add -",
-        unless => "/usr/bin/apt-key list | /bin/grep 4096R/4BD6EC30",
+        # unless => "/usr/bin/apt-key list | /bin/grep 4096R/4BD6EC30",
         path => ["/bin", "/usr/bin"],
         timeout => "10", 
       }
