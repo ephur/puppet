@@ -29,13 +29,13 @@ class cloud-monitoring-agent ($facter_versio=latest, $cloudmonitoring_version=la
       exec { "cloudmonitoring-apt-update": 
         command => "/usr/bin/apt-get update",
         path => ["/bin", "/usr/bin"], 
-        subscribe => [Exec[cloudmonitoring-apt-key],File["/etc/apt/sources.list.d/cloudmonitoringlabs.list"]],
+        subscribe => [Exec[cloudmonitoring-apt-key],File["/etc/apt/sources.list.d/cloudmonitoring.list"]],
         refreshonly => true
       }
         
       package { ["cloudmonitoring-common","cloudmonitoring"]: 
         ensure => $cloudmonitoring_version,
-        require => [File["/etc/apt/sources.list.d/cloudmonitoringlabs.list"],Exec["cloudmonitoring-apt-update"]], 
+        require => [File["/etc/apt/sources.list.d/cloudmonitoring.list"],Exec["cloudmonitoring-apt-update"]], 
       }
      
     } 
