@@ -33,7 +33,7 @@ class cloud-monitoring-agent ($facter_versio=latest, $cloudmonitoring_version=la
         refreshonly => true
       }
         
-      package { ["cloudmonitoring-common","cloudmonitoring"]: 
+      package { ["rackspace-monitoring-agent"]: 
         ensure => $cloudmonitoring_version,
         require => [File["/etc/apt/sources.list.d/cloudmonitoring.list"],Exec["cloudmonitoring-apt-update"]], 
       }
