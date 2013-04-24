@@ -1,5 +1,5 @@
 
-class cloudmonitoring ($facter_versio=latest, $cloudmonitoring_version=latest) { 
+class cloud-monitoring-agent ($facter_versio=latest, $cloudmonitoring_version=latest) { 
 
   case $operatingsystem { 
   
